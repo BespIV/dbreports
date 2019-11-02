@@ -2,15 +2,14 @@ package com.dbreports;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 class Config {
-    static String author;
-    static String pathDB;
-    static String userDB;
-    static String passDB;
+    String author;
+    String pathDB;
+    String userDB;
+    String passDB;
     private static File config = new File(".", "resources\\config.properties");
     private static String pathConfig = config.getAbsolutePath();
 

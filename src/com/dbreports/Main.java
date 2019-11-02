@@ -3,10 +3,10 @@ package com.dbreports;
 public class Main {
     public static void main(String[] args) {
         Debugger.out("App started!");
-        new Config();
-        Debugger.out(Config.author);
-        Debugger.out(Config.pathDB);
-        Debugger.out(Config.userDB);
-        Debugger.out(Config.passDB);
+        Config config = new Config();
+        Debugger.out(config.author);
+        Debugger.out(config.pathDB);
+        Debugger.out(config.userDB);
+        Debugger.out(config.passDB);
     }
 }
