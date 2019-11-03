@@ -5,50 +5,44 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-class Config {
-    String author;
-    String pathDB;
-    String userDB;
-    String passDB;
-    private static File config = new File(".", "resources\\config.properties");
-    private static String pathConfig = config.getAbsolutePath();
+public class Config {
+    public boolean correct = false;
+    public String pathApp;
+    public String pathDB;
+    public String pathWorkspace;
+    public String nameMainDb;
 
     Config() {
+        this.pathApp = System.getProperty("user.dir");
+        loadPropertiesFromFile();
+        checkConfigVars();
+    }
+
+    private void loadPropertiesFromFile(){
+        FileInputStream streamConfig;
         try {
-            FileInputStream streamConfig = new FileInputStream(pathConfig);
+            File configFile = new File(".", "resources/config.properties");
+            streamConfig = new FileInputStream(configFile);
             Properties props = new Properties();
             props.load(streamConfig);
-            this.setAuthor(props.getProperty("author"));
-            this.setPathDB(props.getProperty("pathDB"));
-            this.setUserDB(props.getProperty("userDB"));
-            this.setPassDB(props.getProperty("passDB"));
-            checkProps();
+            pathDB = pathApp + props.getProperty("pathDB").replace("/", "\\");
+            pathWorkspace = pathApp + props.getProperty("pathWorkspace").replace("/", "\\");
+            nameMainDb = props.getProperty("nameMainDb");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-        private void setAuthor (String author){
-            this.author = author;
+    
+    private void checkConfigVars(){
+        if (pathDB == null){
+            Debugger.out("pathDB не задан");
+        }else if(pathWorkspace == null){
+            Debugger.out("pathWorkspace не задан");
+        }else if(nameMainDb == null){
+            Debugger.out("nameMainDb не задан");
+        }else {
+            correct = true;
+            Debugger.out("Конфигурация загружена успешно");
         }
-
-        private void setPathDB (String pathDB){
-            this.pathDB = pathDB;
-        }
-
-        private void setUserDB (String userDB){
-            this.userDB = userDB;
-        }
-
-        private void setPassDB (String passDB){
-            this.passDB = passDB;
-        }
-
-        private void checkProps () {
-            if (author != null && pathDB != null && userDB != null && passDB != null) {
-                Debugger.out("Конфигурация загружена");
-            } else {
-                Debugger.out("Есть отсутствующие параметры");
-            }
-        }
+    }
 }
