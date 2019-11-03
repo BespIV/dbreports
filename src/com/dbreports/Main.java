@@ -6,7 +6,12 @@ public class Main {
         Config config = new Config();
         if (config.correct){
             Database db = new Database(config.pathDB,config.nameMainDb);
+            db.connect();
+            db.createNewDb();
+            Case person1 = new Case("box", "Vasya", "2019-02-03", true);
+            db.addCase(person1);
         }
+
 
     }
 }
