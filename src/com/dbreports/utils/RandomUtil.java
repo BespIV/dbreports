@@ -1,9 +1,7 @@
 package com.dbreports.utils;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Random;
 
@@ -31,13 +29,11 @@ public class RandomUtil {
 
     public String getRandomDate(int year){
         Calendar calendar = new GregorianCalendar();
-        calendar.set(calendar.YEAR, year);
-        calendar.set(calendar.MONTH, random.nextInt(11));
-        calendar.set(calendar.DAY_OF_MONTH,random.nextInt(calendar.getMaximum(calendar.DAY_OF_MONTH)));
-        Date date = new Date();
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, random.nextInt(11));
+        calendar.set(Calendar.DAY_OF_MONTH,random.nextInt(calendar.getMaximum(Calendar.DAY_OF_MONTH)));
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         format.setTimeZone(calendar.getTimeZone());
-
         return format.format(calendar.getTime());
     }
 }

@@ -7,12 +7,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Config {
-    public boolean correct = false;
-    public String pathApp;
-    public String pathDB;
-    public String pathWorkspace;
-    public String nameMainDb;
+class Config {
+    boolean correct = false;
+    String pathApp;
+    String pathDB;
+    String pathWorkspace;
+    String nameMainDb;
 
     Config() {
         this.pathApp = System.getProperty("user.dir");
@@ -21,10 +21,9 @@ public class Config {
     }
 
     private void loadPropertiesFromFile(){
-        FileInputStream streamConfig;
         try {
             File configFile = new File(".", "resources/config.properties");
-            streamConfig = new FileInputStream(configFile);
+            FileInputStream streamConfig = new FileInputStream(configFile);
             Properties props = new Properties();
             props.load(streamConfig);
             pathDB = pathApp + props.getProperty("pathDB").replace("/", "\\");
@@ -37,14 +36,14 @@ public class Config {
     
     private void checkConfigVars(){
         if (pathDB == null){
-            Debugger.out("pathDB не задан");
+            Debugger.out("Config", "pathDB не задан");
         }else if(pathWorkspace == null){
-            Debugger.out("pathWorkspace не задан");
+            Debugger.out("Config", "pathWorkspace не задан");
         }else if(nameMainDb == null){
-            Debugger.out("nameMainDb не задан");
+            Debugger.out("Config", "nameMainDb не задан");
         }else {
             correct = true;
-            Debugger.out("Конфигурация загружена успешно");
+            Debugger.out("Config", "Конфигурация загружена успешно");
         }
     }
 }

@@ -24,7 +24,9 @@ public class Database {
             conn = DriverManager.getConnection(connectionString);
             stat = conn.createStatement();
             if (conn != null){
-                Debugger.out("Connect to " + connectionString + " SUCCESS!");
+                Debugger.out("Database", "Connect to " + connectionString + " SUCCESS!");
+            } else{
+                Debugger.out("Database","Connect to " + connectionString + " SUCCESS!");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -34,16 +36,16 @@ public class Database {
     public void existDb(){
         File db = new File(pathDb+nameDb);
         if (db.exists()){
-            Debugger.out("Файл существует "+pathDb+nameDb);
+            Debugger.out("Database","Файл существует "+pathDb+nameDb);
         } else {
-            Debugger.out("Файл НЕ существует "+pathDb+nameDb);
+            Debugger.out("Database","Файл НЕ существует "+pathDb+nameDb);
         }
     }
 
-    public void createNewDb(){
+    public void initNewDb(){
         try {
             stat.execute("CREATE TABLE IF NOT EXISTS 'cases' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'product' text,'signOON' boolean,'customer' text,'dateInserting' date);");
-            Debugger.out("Таблица создана");
+            Debugger.out("Database","Таблица создана");
         } catch (SQLException e) {
             e.printStackTrace();
         }
