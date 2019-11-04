@@ -13,6 +13,7 @@ class Config {
     String pathDB;
     String pathWorkspace;
     String nameMainDb;
+    String pathExcel;
 
     Config() {
         this.pathApp = System.getProperty("user.dir");
@@ -29,6 +30,7 @@ class Config {
             pathDB = pathApp + props.getProperty("pathDB").replace("/", "\\");
             pathWorkspace = pathApp + props.getProperty("pathWorkspace").replace("/", "\\");
             nameMainDb = props.getProperty("nameMainDb");
+            pathExcel = props.getProperty("pathExcel");
         } catch (IOException e) {
             e.printStackTrace();
         }
