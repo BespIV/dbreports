@@ -13,12 +13,8 @@ public class Case {
         this.signOON=signOON;
     }
 
-    public String createTable(){
-        return "CREATE TABLE IF NOT EXISTS 'cases' ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'product' text,'signOON' boolean,'customer' text,'dateInserting' date);";
-    }
-
-    public String addToDb(){
-        String query = "INSERT INTO 'cases' ('product', 'signOON', 'customer', 'dateInserting') VALUES ("+ product +", "+ signOON +", "+ customer +", "+ dateInserting +");";
-        return query;
+    public String toString(){
+        String result = product+" "+customer+" "+dateInserting+" "+signOON;
+        return result;
     }
 }
