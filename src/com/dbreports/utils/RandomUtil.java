@@ -33,7 +33,7 @@ public class RandomUtil {
         Calendar calendar = new GregorianCalendar();
         calendar.set(calendar.YEAR, year);
         calendar.set(calendar.MONTH, random.nextInt(11));
-        calendar.set(calendar.DAY_OF_MONTH,random.nextInt(20));
+        calendar.set(calendar.DAY_OF_MONTH,random.nextInt(calendar.getMaximum(calendar.DAY_OF_MONTH)));
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         format.setTimeZone(calendar.getTimeZone());
