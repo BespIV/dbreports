@@ -36,4 +36,8 @@ public class RandomUtil {
         format.setTimeZone(calendar.getTimeZone());
         return format.format(calendar.getTime());
     }
+
+    public Boolean getRandomBoolean(){
+        return random.nextBoolean();
+    }
 }
