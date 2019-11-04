@@ -14,7 +14,7 @@ public class Main {
             db.connect();
             db.initNewDb();
             //наполнение таблицы cases данными
-            int numCases = 10;
+            int numCases = 1;
             while (numCases>0){
                 Case person = new Case(rand.getRandomString(6), rand.getRandomString(6), rand.getRandomDate(2019), rand.getRandomBoolean());
                 db.addCase(person);
@@ -22,6 +22,8 @@ public class Main {
             }
             //вывод данных таблицы в консоль
             db.selectAll();
+            db.closeDB();
+
         }
 
 
