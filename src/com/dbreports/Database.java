@@ -82,6 +82,17 @@ public class Database {
                         resSet.getString(5)
                 );
             }
+            resSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void closeDB(){
+        try {
+            resSet.close();
+            stat.close();
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
