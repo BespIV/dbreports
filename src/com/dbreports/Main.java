@@ -1,6 +1,7 @@
 package com.dbreports;
 
 import com.dbreports.utils.Debugger;
+import com.dbreports.utils.RandomUtil;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,10 +9,19 @@ public class Main {
         Config config = new Config();
         if (config.correct){
             Database db = new Database(config.pathDB,config.nameMainDb);
+            RandomUtil rand = new RandomUtil();
+            //подключение к БД
             db.connect();
             db.initNewDb();
-            Case person1 = new Case("box", "Vasya", "2019-02-03", true);
-            db.addCase(person1);
+            //наполнение таблицы cases данными
+            int numCases = 10;
+            while (numCases>0){
+                Case person = new Case(rand.getRandomString(6), rand.getRandomString(6), rand.getRandomDate(2019), rand.getRandomBoolean());
+                db.addCase(person);
+                numCases--;
+            }
+            //вывод данных таблицы в консоль
+            db.selectAll();
         }
 
 
