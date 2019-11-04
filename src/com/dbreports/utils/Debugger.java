@@ -1,6 +1,6 @@
-package com.dbreports;
+package com.dbreports.utils;
 
-class Debugger {
+public class Debugger {
     public static void out(String inString){
         System.out.println("[DEBUG]: " + inString);
     }

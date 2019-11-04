@@ -1,10 +1,9 @@
 package com.dbreports;
 
+import com.dbreports.utils.Debugger;
+
 import java.io.File;
 import java.sql.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class Database {
     public String connectionString;

@@ -1,4 +1,5 @@
 package com.dbreports;
+import com.dbreports.utils.Debugger;
 import com.dbreports.utils.RandomUtil;
 
 public class TestUtil {
