@@ -8,24 +8,23 @@ Portable приложение для работы с базой данных и 
 - JavaFX (графический интерфейс)
 
 Структура portable приложения:  
-* /Project  
-  + /jre1.8.0_231
+* /dbreports_portable
+  + /jre1.8.0_231 (добавляется вручную)
   + /app  
+    + /lib (библиотеки из зависимостей)
     + dbreports.jar
   + /workspace
     + /sqlite/
       + db.sqlite
-    + /reports
+    + /excel
       + *.xlsx
     + /backup
       + *.sqlite
   + /resources
     + config.properties
-  + run_jar.bat
+  + dbreports_run.bat
   
 Использование:
-1) в настройках IntelliJ IDEA "Project Structure" - "Artifacts" подключаются библиотеки и драйвера; 
-2) создается артефакт dbreports.jar "Build" - "Build artifacts...";
-3) dbreports.jar копируется в каталог /app;
-4) config.properties копируется в каталог /resources;
-5) сформированная структура архивируется (.zip) для дальнейшего развертывания.
+1) собрать проект при помощи maven: clean -> install, собирается структура проекта в директории /target/dbreports_portable/
+2) добавить /jre1.8.0_231 в /target/dbreports_portable/
+3) запаковать /target/dbreports_portable/ в дистрибутив для передачи.
