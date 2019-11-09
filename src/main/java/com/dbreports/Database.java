@@ -21,6 +21,8 @@ public class Database {
 
     public void connect(){
         try {
+            File file = new File(pathDb);
+            file.mkdirs();
             conn = DriverManager.getConnection(connectionString);
             stat = conn.createStatement();
             if (conn != null) {
