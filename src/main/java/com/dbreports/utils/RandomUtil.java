@@ -9,7 +9,7 @@ public class RandomUtil {
     final private Random random = new Random();
 
     public String getRandomString(int length){
-        String alphabet="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String alphabet="АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
         StringBuilder result = new StringBuilder();
         while(length>0){
             result.append(alphabet.charAt(random.nextInt(alphabet.length())));
